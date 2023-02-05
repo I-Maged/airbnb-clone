@@ -1,0 +1,31 @@
+{
+  "name": "airbnb-clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/I-Maged/airbnb-clone.git"
+  },
+  "author": "Maged",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/I-Maged/airbnb-clone/issues"
+  },
+  "homepage": "https://github.com/I-Maged/airbnb-clone#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "image-downloader": "^4.3.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.0",
+    "multer": "^1.4.5-lts.1"
+  }
+}
