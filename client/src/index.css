@@ -2,6 +2,9 @@
   font-family: Circular;
   src: url('./assets/CircularStd.otf');
 }
+:root {
+  --main-black: #222;
+}
 *,
 *::before,
 *::after {
@@ -13,4 +16,30 @@
 body {
   font-family: Circular, sans-serif;
   min-height: 100vh;
+}
+.navbar {
+  width: 100%;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--main-black);
+  background-color: chartreuse;
+}
+.logo1 {
+  width: 102px;
+  height: 32px;
+}
+.logo2 {
+  width: 30px;
+  height: 30px;
+  display: none;
+}
+@media (max-width: 768px) {
+  .logo1 {
+    display: none;
+  }
+  .logo2 {
+    display: block;
+  }
 }
