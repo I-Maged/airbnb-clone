@@ -1,0 +1,82 @@
+@import './Variables.css';
+nav {
+  width: 100%;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--light-gray);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+.logo1 {
+  width: 30px;
+  padding-right: 8px;
+}
+.logo2 {
+  width: 60px;
+}
+.search-form {
+  padding: 5px 8px;
+  min-width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid var(--light-gray) 1px;
+  border-radius: 30px;
+}
+.form-group-primary,
+.form-group-secondary {
+  padding: 0 8px;
+}
+.form-group-primary {
+  border-right: solid var(--light-gray) 1px;
+}
+.search-input-primary,
+.search-input-secondary {
+  border: none;
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 30px;
+}
+.search-input-primary {
+  width: 100px;
+}
+.search-input-secondary {
+  width: 110px;
+  color: var(--secondary-black);
+}
+.search-input-primary::placeholder {
+  color: var(--primary-black);
+  font-size: 14px;
+}
+.search-input-secondary::placeholder {
+  color: var(--secondary-black);
+  font-size: 14px;
+}
+.search-input-primary:focus,
+.search-input-secondary:focus {
+  outline: solid var(--light-gray) 1px;
+}
+.form-btn {
+  color: #fff;
+  padding: 10px;
+  background-color: var(--primary-red);
+  border-radius: 180px;
+  cursor: pointer;
+  border: none;
+}
+.form-btn:hover {
+  background-color: var(--secondary-red);
+}
+.form-btn:active {
+  position: relative;
+  top: 1px;
+}
+@media (max-width: 768px) {
+  .logo2 {
+    display: none;
+  }
+}
