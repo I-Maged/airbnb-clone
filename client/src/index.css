@@ -2,6 +2,13 @@
   font-family: Circular;
   src: url('./assets/CircularStdBold.otf');
 }
+:root {
+  --primary-black: #222;
+  --dark-gray: #717171;
+  --light-gray: #dddddd;
+  --primary-red: #ff385c;
+  --secondary-red: #e00b41;
+}
 *,
 *::before,
 *::after {
@@ -9,8 +16,15 @@
   padding: 0;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 body {
   font-family: Circular, sans-serif;
   min-height: 100vh;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
