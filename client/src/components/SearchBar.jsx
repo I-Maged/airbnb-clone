@@ -3,21 +3,21 @@ import { FaSearch } from 'react-icons/fa';
 import '../styles/SearchBar.css';
 
 const SearchBar = () => {
-  const [place, setPlace] = useState('Anywhere');
+  const [location, setLocation] = useState('Anywhere');
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(place);
+    console.log(location);
   };
 
   return (
     <form onSubmit={onSubmit} className='search-form flex'>
       <div className='form-group-primary'>
         <select
-          name='place'
-          id='place'
-          value={place}
-          onChange={(e) => setPlace(e.target.value)}
+          name='location'
+          id='location'
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
           className='search-input-primary'
         >
           <option value='Anywhere'>Anywhere</option>

@@ -1,6 +1,6 @@
 @font-face {
   font-family: Circular;
-  src: url('./assets/CircularStdBold.otf');
+  src: url('./assets/CircularStdMed.otf');
 }
 :root {
   --primary-black: #222;
@@ -20,7 +20,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 body {
-  font-family: Circular, sans-serif;
+  font-family: Circular, Times, sans-serif;
   min-height: 100vh;
 }
 .flex {

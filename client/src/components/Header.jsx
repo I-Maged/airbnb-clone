@@ -1,4 +1,5 @@
 import SearchBar from './SearchBar';
+import UserMenu from './UserMenu';
 import LogoLg from '../assets/logo-lg.png';
 import LogoSm from '../assets/logo-sm.png';
 import '../styles/Header.css';
@@ -14,7 +15,7 @@ const Header = () => {
         <div className='search-from-lg'>
           <SearchBar />
         </div>
-        <h1>Airbnb</h1>
+        <UserMenu />
       </nav>
       <div className='search-from-sm'>
         <SearchBar />
