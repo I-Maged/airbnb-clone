@@ -4,7 +4,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import '../styles/UserMenu.css';
 
 const UserMenu = () => {
-  const [menuOpen, setMenuOpen] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const closeMenu = (e) => {
@@ -12,21 +12,21 @@ const UserMenu = () => {
         setMenuOpen(false);
       }
     };
+
     document.body.addEventListener('click', closeMenu);
+    return () => document.body.removeEventListener('click', closeMenu);
   }, []);
 
   return (
     <div className='menu-wrapper flex'>
       <h5>Airbnb your home</h5>
-      <div
+      <button
         id='menu-ref'
-        className='user-menu'
+        className='user-menu flex'
         onClick={() => setMenuOpen((prevState) => !prevState)}
       >
-        <div className='user-menu-icons flex' id='menu-ref'>
-          <FaBars id='menu-ref' />
-          <FaUserCircle id='menu-ref' className='user-icon' />
-        </div>
+        <FaBars id='menu-ref' />
+        <FaUserCircle id='menu-ref' className='user-icon' />
         <div
           className='user-menu-list'
           style={{ display: !menuOpen && 'none' }}
@@ -34,7 +34,7 @@ const UserMenu = () => {
           <div id='menu-ref'>Log in</div>
           <div id='menu-ref'>Airbnb your home</div>
         </div>
-      </div>
+      </button>
     </div>
   );
 };

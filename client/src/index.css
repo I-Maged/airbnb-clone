@@ -18,9 +18,9 @@
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: Circular, Times, sans-serif;
 }
 body {
-  font-family: Circular, Times, sans-serif;
   min-height: 100vh;
 }
 .flex {
