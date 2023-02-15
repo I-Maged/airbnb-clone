@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import { FaUserCircle } from 'react-icons/fa';
 import '../styles/UserMenu.css';
@@ -31,7 +32,9 @@ const UserMenu = () => {
           className='user-menu-list'
           style={{ display: !menuOpen && 'none' }}
         >
-          <div id='menu-ref'>Log in</div>
+          <div id='menu-ref'>
+            <Link to='/login'>Log in</Link>
+          </div>
           <div id='menu-ref'>Airbnb your home</div>
         </div>
       </button>
