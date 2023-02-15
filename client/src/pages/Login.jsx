@@ -5,41 +5,50 @@ import { useState } from 'react';
 const Login = () => {
   const [signupActive, setSignupActive] = useState(true);
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    password2: '',
+  const [signUpFormData, setSignUpFormData] = useState({
+    signUpName: '',
+    signUpEmail: '',
+    signUpPassword: '',
+    signUpPassword2: '',
   });
+  const { signUpName, signUpEmail, signUpPassword, signUpPassword2 } =
+    signUpFormData;
 
-  const { name, email, password, password2 } = formData;
+  const [loginFormData, setLoginFormData] = useState({
+    loginEmail: '',
+    loginPassword: '',
+  });
+  const { loginEmail, loginPassword } = loginFormData;
 
-  const onChange = (e) => {
-    setFormData((prevState) => ({
+  const onSignUpChange = (e) => {
+    setSignUpFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const onLoginChange = (e) => {
+    setLoginFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  // };
-
   const handleSignUp = (e) => {
     e.preventDefault();
     const userData = {
-      name,
-      email,
-      password,
-      password2,
+      signUpName,
+      signUpEmail,
+      signUpPassword,
+      signUpPassword2,
     };
     console.log(userData);
   };
+
   const handleLogin = (e) => {
     e.preventDefault();
     const userData = {
-      email,
-      password,
+      loginEmail,
+      loginPassword,
     };
     console.log(userData);
   };
@@ -75,38 +84,38 @@ const Login = () => {
             <input
               type='email'
               className='input'
-              id='email'
-              name='email'
-              value={email}
-              onChange={onChange}
+              id='signUpEmail'
+              name='signUpEmail'
+              value={signUpEmail}
+              onChange={onSignUpChange}
               placeholder='Email'
             />
             <input
               type='text'
               className='input'
-              id='name'
-              name='name'
-              value={name}
-              onChange={onChange}
+              id='signUpName'
+              name='signUpName'
+              value={signUpName}
+              onChange={onSignUpChange}
               placeholder='Username'
             />
             <input
               type='password'
               className='input'
-              id='password'
+              id='signUpPassword'
               name='password'
-              value={password}
-              onChange={onChange}
+              value={signUpPassword}
+              onChange={onSignUpChange}
               autoComplete='off'
               placeholder='Password'
             />
             <input
               type='password'
               className='input'
-              id='password2'
-              name='password2'
-              value={password2}
-              onChange={onChange}
+              id='signUpPassword2'
+              name='signUpPassword2'
+              value={signUpPassword2}
+              onChange={onSignUpChange}
               autoComplete='off'
               placeholder='Confirm Password'
             />
@@ -122,19 +131,19 @@ const Login = () => {
             <input
               type='email'
               className='input'
-              id='email'
-              name='email'
-              value={email}
-              onChange={onChange}
+              id='loginEmail'
+              name='loginEmail'
+              value={loginEmail}
+              onChange={onLoginChange}
               placeholder='Email'
             />
             <input
               type='password'
               className='input'
-              id='password'
-              name='password'
-              value={password}
-              onChange={onChange}
+              id='loginPassword'
+              name='loginPassword'
+              value={loginPassword}
+              onChange={onLoginChange}
               autoComplete='off'
               placeholder='Password'
             />

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import UserMenu from './UserMenu';
 import LogoLg from '../assets/logo-lg.png';
@@ -9,8 +10,10 @@ const Header = () => {
     <>
       <nav>
         <div className='nav-logo'>
-          <img src={LogoLg} className='LogoLg' alt='airbnb pic logo' />
-          <img src={LogoSm} className='LogoSm' alt='airbnb logo' />
+          <Link to='/'>
+            <img src={LogoLg} className='LogoLg' alt='airbnb pic logo' />
+            <img src={LogoSm} className='LogoSm' alt='airbnb logo' />
+          </Link>
         </div>
         <div className='search-from-lg'>
           <SearchBar />
