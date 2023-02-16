@@ -1,8 +1,17 @@
-import '../styles/Login.css';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { register, login } from '../features/auth/authSlice';
+import { toast } from 'react-toastify';
+import Spinner from '../components/Spinner';
+import '../styles/Login.css';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { isLoading } = useSelector((state) => state.auth);
+
   const [signupActive, setSignupActive] = useState(true);
 
   const [signUpFormData, setSignUpFormData] = useState({
@@ -33,25 +42,48 @@ const Login = () => {
     }));
   };
 
-  const handleSignUp = (e) => {
-    e.preventDefault();
-    const userData = {
-      signUpName,
-      signUpEmail,
-      signUpPassword,
-      signUpPassword2,
-    };
-    console.log(userData);
-  };
-
   const handleLogin = (e) => {
     e.preventDefault();
+
     const userData = {
-      loginEmail,
-      loginPassword,
+      email: loginEmail,
+      password: loginPassword,
     };
-    console.log(userData);
+
+    dispatch(login(userData))
+      .unwrap()
+      .then((user) => {
+        toast.success(`Logged in as ${user.name}`);
+        navigate('/');
+      })
+      .catch(toast.error);
   };
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+
+    if (signUpPassword !== signUpPassword2) {
+      toast.error('Passwords do not match');
+    } else {
+      const userData = {
+        name: signUpName,
+        email: signUpEmail,
+        password: signUpPassword,
+      };
+
+      dispatch(register(userData))
+        .unwrap()
+        .then((user) => {
+          toast.success(`Registered new user - ${user.name}`);
+          navigate('/');
+        })
+        .catch(toast.error);
+    }
+  };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div className='form-wrap'>
@@ -103,7 +135,7 @@ const Login = () => {
               type='password'
               className='input'
               id='signUpPassword'
-              name='password'
+              name='signUpPassword'
               value={signUpPassword}
               onChange={onSignUpChange}
               autoComplete='off'
