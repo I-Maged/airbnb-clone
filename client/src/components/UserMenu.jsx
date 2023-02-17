@@ -32,10 +32,22 @@ const UserMenu = () => {
           className='user-menu-list'
           style={{ display: !menuOpen && 'none' }}
         >
-          <div id='menu-ref'>
-            <Link to='/login'>Log in</Link>
+          <h4 className='signup-tab'>
+            <Link className='user-menu-link' to='/login'>
+              Log in
+            </Link>
+          </h4>
+          <h4 className='signup-tab'>
+            <Link className='user-menu-link' to='/'>
+              Airbnb your home
+            </Link>
+          </h4>
+          {/* <div id='menu-ref'>
+            <Link className='user-menu-link' to='/login'>
+              Log in
+            </Link>
           </div>
-          <div id='menu-ref'>Airbnb your home</div>
+          <div id='menu-ref'>Airbnb your home</div> */}
         </div>
       </button>
     </div>
