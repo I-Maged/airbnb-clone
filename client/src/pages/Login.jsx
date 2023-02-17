@@ -3,14 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { register, login } from '../features/auth/authSlice';
 import { toast } from 'react-toastify';
-import Spinner from '../components/Spinner';
+// import Spinner from '../components/Spinner';
 import '../styles/Login.css';
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isLoading } = useSelector((state) => state.auth);
+  // const { isLoading } = useSelector((state) => state.auth);
 
   const [signupActive, setSignupActive] = useState(true);
 
@@ -81,9 +81,9 @@ const Login = () => {
     }
   };
 
-  if (isLoading) {
-    return <Spinner />;
-  }
+  // if (isLoading) {
+  //   return <Spinner />;
+  // }
 
   return (
     <div className='form-wrap'>

@@ -36,12 +36,18 @@ h5 {
 }
 h4 {
   width: 100%;
+  text-align: left;
+  padding: 0.7em;
+  border-bottom: solid 1px var(--light-gray);
+}
+.user-menu-list p {
+  width: 100%;
+  text-align: left;
+  padding: 0.7em;
   border-bottom: solid 1px var(--light-gray);
 }
 h4 a {
-  padding: 0.5em;
-  text-align: left;
-  font-weight: 500;
+  /* font-weight: 500; */
   display: block;
   color: var(--primary-black);
 }
