@@ -22,7 +22,7 @@ const houseSchema = mongoose.Schema(
     },
     discount: {
       type: Number,
-      required: [true, 'Please add price per night'],
+      required: false,
       default: null,
     },
   },
