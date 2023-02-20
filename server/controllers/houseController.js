@@ -2,8 +2,17 @@ const asyncHandler = require('express-async-handler');
 
 const House = require('../models/houseModel');
 
+// @desc    GET all houses
+// @route   GET /api/houses
+// @access  Public
+const getAllHouses = asyncHandler(async (_, res) => {
+  const houses = await House.find();
+
+  res.status(200).json(houses);
+});
+
 // @desc    Create new house
-// @route   POST /api/houses
+// @route   POST /api/houses/user
 // @access  Private
 const createHouse = asyncHandler(async (req, res) => {
   const { location, description, price } = req.body;
@@ -23,16 +32,37 @@ const createHouse = asyncHandler(async (req, res) => {
   res.status(201).json(house);
 });
 
-// @desc    GET all houses
-// @route   GET /api/houses
-// @access  Public
-const getAllHouses = asyncHandler(async (_, res) => {
-  const houses = await House.find();
+// @desc    GET user houses
+// @route   GET /api/houses/user
+// @access  Private
+const getUserHouses = asyncHandler(async (req, res) => {
+  const houses = await House.find({ user: req.user.id });
 
   res.status(200).json(houses);
+});
+
+// @desc    Get user house
+// @route   GET /api/houses/user/:id
+// @access  Private
+const getHousePrivate = asyncHandler(async (req, res) => {
+  const house = await House.findById(req.params.id);
+
+  if (!house) {
+    res.status(404);
+    throw new Error('House not found');
+  }
+
+  if (house.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error('Not Authorized');
+  }
+
+  res.status(200).json(house);
 });
 
 module.exports = {
   createHouse,
   getAllHouses,
+  getUserHouses,
+  getHousePrivate,
 };
