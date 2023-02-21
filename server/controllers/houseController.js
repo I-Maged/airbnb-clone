@@ -11,6 +11,48 @@ const getAllHouses = asyncHandler(async (_, res) => {
   res.status(200).json(houses);
 });
 
+// @desc    GET single house
+// @route   GET /api/houses/:id
+// @access  Public
+const getHouse = asyncHandler(async (req, res) => {
+  const house = await House.findById(req.params.id);
+
+  if (!house) {
+    res.status(404);
+    throw new Error('House not found');
+  }
+
+  res.status(200).json(house);
+});
+
+// @desc    GET user houses
+// @route   GET /api/houses/user
+// @access  Private
+const getUserHouses = asyncHandler(async (req, res) => {
+  const houses = await House.find({ user: req.user.id });
+
+  res.status(200).json(houses);
+});
+
+// @desc    Get user house
+// @route   GET /api/houses/user/:id
+// @access  Private
+const getUserSingleHouse = asyncHandler(async (req, res) => {
+  const house = await House.findById(req.params.id);
+
+  if (!house) {
+    res.status(404);
+    throw new Error('House not found');
+  }
+
+  if (house.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error('Not Authorized');
+  }
+
+  res.status(200).json(house);
+});
+
 // @desc    Create new house
 // @route   POST /api/houses/user
 // @access  Private
@@ -32,19 +74,10 @@ const createHouse = asyncHandler(async (req, res) => {
   res.status(201).json(house);
 });
 
-// @desc    GET user houses
-// @route   GET /api/houses/user
+// @desc    Update house
+// @route   PUT /api/houses/user/:id
 // @access  Private
-const getUserHouses = asyncHandler(async (req, res) => {
-  const houses = await House.find({ user: req.user.id });
-
-  res.status(200).json(houses);
-});
-
-// @desc    Get user house
-// @route   GET /api/houses/user/:id
-// @access  Private
-const getHousePrivate = asyncHandler(async (req, res) => {
+const updateHouse = asyncHandler(async (req, res) => {
   const house = await House.findById(req.params.id);
 
   if (!house) {
@@ -57,12 +90,40 @@ const getHousePrivate = asyncHandler(async (req, res) => {
     throw new Error('Not Authorized');
   }
 
-  res.status(200).json(house);
+  const updatedHouse = await Ticket.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+
+  res.status(200).json(updatedHouse);
+});
+
+// @desc    Delete house
+// @route   DELETE /api/houses/user/:id
+// @access  Private
+const deleteHouse = asyncHandler(async (req, res) => {
+  const house = await House.findById(req.params.id);
+
+  if (!house) {
+    res.status(404);
+    throw new Error('House not found');
+  }
+
+  if (house.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error('Not Authorized');
+  }
+
+  await house.remove();
+
+  res.status(200).json({ success: true });
 });
 
 module.exports = {
-  createHouse,
   getAllHouses,
+  getHouse,
   getUserHouses,
-  getHousePrivate,
+  getUserSingleHouse,
+  createHouse,
+  updateHouse,
+  deleteHouse,
 };
