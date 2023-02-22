@@ -90,7 +90,7 @@ const updateHouse = asyncHandler(async (req, res) => {
     throw new Error('Not Authorized');
   }
 
-  const updatedHouse = await Ticket.findByIdAndUpdate(req.params.id, req.body, {
+  const updatedHouse = await House.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
 
