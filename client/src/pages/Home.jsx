@@ -1,9 +1,19 @@
-import { useSelector } from 'react-redux';
+import ProductCard from '../components/ProductCard';
+import '../styles/Home.css';
 
 const Home = () => {
-  const { user } = useSelector((state) => state.auth);
-
-  return <div>{user ? <h1>Welcome {user.name}</h1> : <h1>HomePage</h1>}</div>;
+  return (
+    <section className='products-grid'>
+      <div className='cards'>
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+      </div>
+    </section>
+  );
 };
 
 export default Home;
