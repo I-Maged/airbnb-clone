@@ -27,7 +27,6 @@
 }
 .card-text {
   background-color: var(--light-gray);
-  border: 1px solid var(--dark-gray);
   padding: 8px;
   border-radius: 20px;
 }
