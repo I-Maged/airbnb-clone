@@ -1,7 +1,7 @@
 import { FaArrowRight } from 'react-icons/fa';
 import '../styles/ProductCard.css';
 
-const ProductCard = () => {
+const ProductCard = ({ house }) => {
   return (
     <div className='card'>
       <div className='card-image-container'>
@@ -11,10 +11,10 @@ const ProductCard = () => {
         />
       </div>
       <div className='card-content'>
-        <p className='card-title'>House location</p>
+        <p className='card-title'>{house.description}</p>
+        <p className='card-title'>{house.location}</p>
         <div className='card-info'>
-          <p className='card-text'>5 nights</p>
-          <p className='card-text'>$75</p>
+          <p className='card-text'>{house.price}</p>
           <p className='card-price'>
             Book <FaArrowRight />
           </p>
