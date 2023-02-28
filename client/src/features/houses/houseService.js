@@ -9,8 +9,25 @@ const getAllHouses = async () => {
   return response.data;
 };
 
+const createHouse = async (houseData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.post(
+    `${API_URL_PRIVATE}/user`,
+    houseData,
+    config
+  );
+
+  return response.data;
+};
+
 const houseService = {
   getAllHouses,
+  createHouse,
 };
 
 export default houseService;

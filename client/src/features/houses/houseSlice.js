@@ -18,6 +18,18 @@ export const getAllHouses = createAsyncThunk(
   }
 );
 
+export const createHouse = createAsyncThunk(
+  'houses/create',
+  async (houseData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await houseService.createHouse(houseData, token);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(errorMessage(error));
+    }
+  }
+);
+
 export const houseSlice = createSlice({
   name: 'house',
   initialState,
